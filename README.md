@@ -29,6 +29,28 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## Configuration
+
+### Slack Notifications
+
+To enable Slack notifications for Git commits:
+
+1. Copy `.env.example` to `.env`:
+
+```bash
+cp .env.example .env
+```
+
+2. Add your Slack Webhook URL to `.env`:
+
+```env
+SLACK_WEBHOOK_URL=https://hooks.slack.com/services/YOUR_WORKSPACE_ID/YOUR_CHANNEL_ID/YOUR_TOKEN
+```
+
+3. Get your webhook URL from [Slack API](https://api.slack.com/messaging/webhooks)
+
+The post-commit hook will automatically send notifications to your Slack channel after each commit with proper UTF-8 encoding support.
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.

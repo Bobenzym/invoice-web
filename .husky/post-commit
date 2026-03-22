@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+# UTF-8 인코딩 명시적 설정
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+# Slack 메시지 전송 함수
+send_slack_notification() {
+  local status=$1
+  local branch=$(git rev-parse --abbrev-ref HEAD)
+  local commit_msg=$(git log -1 --format=%B | head -1)
+  local commit_hash=$(git rev-parse --short HEAD)
+  local author=$(git log -1 --format=%an)
+  local timestamp=$(git log -1 --format=%ai)
+
+  # 상태 이모지
+  local emoji="✅"
+  if [ "$status" != "success" ]; then
+    emoji="❌"
+  fi
+
+  # JSON 페이로드 생성 (UTF-8)
+  local payload=$(cat <<EOF
+{
+  "text": "$emoji Git Commit",
+  "attachments": [
+    {
+      "color": "$([ "$status" = "success" ] && echo "36a64f" || echo "ff0000")",
+      "fields": [
+        {
+          "title": "Project",
+          "value": "invoice-web",
+          "short": true
+        },
+        {
+          "title": "Branch",
+          "value": "$branch",
+          "short": true
+        },
+        {
+          "title": "Status",
+          "value": "$status",
+          "short": true
+        },
+        {
+          "title": "Commit",
+          "value": "$commit_hash",
+          "short": true
+        },
+        {
+          "title": "Message",
+          "value": "$commit_msg",
+          "short": false
+        },
+        {
+          "title": "Author",
+          "value": "$author",
+          "short": true
+        },
+        {
+          "title": "Timestamp",
+          "value": "$timestamp",
+          "short": true
+        }
+      ]
+    }
+  ]
+}
+EOF
+)
+
+  # Slack으로 메시지 전송
+  if [ -n "$SLACK_WEBHOOK_URL" ]; then
+    curl -X POST "$SLACK_WEBHOOK_URL" \
+      -H 'Content-Type: application/json; charset=UTF-8' \
+      -d "$payload" \
+      2>/dev/null
+  fi
+}
+
+# Post-commit 작업 실행
+send_slack_notification "success"
+
+exit 0

@@ -15,7 +15,7 @@ const envSchema = z.object({
   NEXT_PUBLIC_SITE_URL: z
     .string()
     .url('Invalid NEXT_PUBLIC_SITE_URL')
-    .optional(),
+    .default('http://localhost:3000'),
 })
 
 export const env = envSchema.parse({

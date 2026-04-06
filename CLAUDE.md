@@ -1,6 +1,6 @@
 # 🤖 Claude Code 개발 지침
 
-**claude-nextjs-starters**는 Next.js 15.5.3 + React 19 기반 모던 웹 애플리케이션 스타터 템플릿입니다.
+**Notion CMS Blog**는 Next.js 15.5.3 + React 19 기반 Notion 연동 블로그 시스템입니다.
 
 ## 🛠️ 핵심 기술 스택
 
@@ -9,6 +9,8 @@
 - **Styling**: TailwindCSS v4 + shadcn/ui (new-york style)
 - **Forms**: React Hook Form + Zod + Server Actions
 - **UI Components**: Radix UI + Lucide Icons
+- **CMS**: Notion API (`@notionhq/client`)
+- **Utilities**: Unified (Notion 블록 렌더링) + YAML (Front Matter)
 - **Development**: ESLint + Prettier + Husky + lint-staged
 
 ## 📚 개발 가이드

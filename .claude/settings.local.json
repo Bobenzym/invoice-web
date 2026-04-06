@@ -13,13 +13,12 @@
       "mcp__context7__resolve-library-id",
       "mcp__context7__get-library-docs"
     ],
+    "defaultMode": "plan",
     "deny": [],
     "ask": []
   },
   "enableAllProjectMcpServers": true,
-  "enabledMcpjsonServers": [
-    "playwright"
-  ],
+  "enabledMcpjsonServers": ["playwright"],
   "hooks": {
     "Notification": [
       {

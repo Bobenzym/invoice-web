@@ -2,6 +2,9 @@ import { Suspense } from 'react'
 
 import { BlogPostListSkeleton } from '@/components/shared/loading-skeleton'
 import { BlogPostList } from '@/components/blog/blog-post-list'
+import { BlogFilterNav } from '@/components/blog/blog-filter-nav'
+import { BlogSearch } from '@/components/blog/blog-search'
+import { getPublishedPosts } from '@/lib/notion/database'
 import type { BlogPostSummary } from '@/lib/types/blog-post'
 import type { ApiPaginatedResponse } from '@/lib/types/api'
 
@@ -43,6 +46,11 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   const params = await searchParams
   const page = Math.max(1, parseInt(params.page ?? '1', 10))
 
+  // 카테고리와 태그 수집
+  const allPosts = await getPublishedPosts(1000)
+  const categories = [...new Set(allPosts.map(p => p.category))]
+  const tags = [...new Set(allPosts.flatMap(p => p.tags))]
+
   return (
     <div className="container space-y-12 py-12">
       {/* 제목 */}
@@ -53,10 +61,21 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
         </p>
       </div>
 
-      {/* 포스트 목록 */}
-      <Suspense fallback={<BlogPostListSkeleton />}>
-        <BlogListContent page={page} />
-      </Suspense>
+      {/* 검색 */}
+      <BlogSearch />
+
+      {/* 메인 콘텐츠 */}
+      <div className="grid gap-8 lg:grid-cols-[1fr_280px]">
+        {/* 포스트 목록 */}
+        <Suspense fallback={<BlogPostListSkeleton />}>
+          <BlogListContent page={page} />
+        </Suspense>
+
+        {/* 사이드바 필터 */}
+        <aside>
+          <BlogFilterNav categories={categories} tags={tags} />
+        </aside>
+      </div>
     </div>
   )
 }

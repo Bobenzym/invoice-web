@@ -45,6 +45,14 @@ export async function getPublishedPosts(limit = 100): Promise<BlogPost[]> {
   }
 }
 
+// ISR 캐시 태그 무효화를 위한 마커
+export const CACHE_TAGS = {
+  posts: 'posts',
+  postBySlug: 'post-by-slug',
+  postsByTag: 'posts-by-tag',
+  postsByCategory: 'posts-by-category',
+} as const
+
 /**
  * slug으로 포스트 조회
  * @param slug 포스트의 slug

@@ -22,6 +22,7 @@ export function BlogPostHeader({ post }: BlogPostHeaderProps) {
             fill
             className="object-cover"
             priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1000px"
           />
         </div>
       )}

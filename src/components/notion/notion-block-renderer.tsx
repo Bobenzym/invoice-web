@@ -240,6 +240,7 @@ function ImageBlock({ block }: { block: any }) {
         alt="Notion image"
         fill
         className="rounded-lg object-cover"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 900px"
       />
     </div>
   )

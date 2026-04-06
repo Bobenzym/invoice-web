@@ -59,7 +59,11 @@ export async function GET(request: Request) {
       },
     })
 
-    return Response.json(response)
+    return Response.json(response, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=600, stale-while-revalidate=3600',
+      },
+    })
   } catch (error) {
     console.error('Failed to search posts:', error)
     return Response.json(

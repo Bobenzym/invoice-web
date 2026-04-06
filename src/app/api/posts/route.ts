@@ -42,7 +42,11 @@ export async function GET(request: Request) {
       },
     })
 
-    return Response.json(response)
+    return Response.json(response, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+      },
+    })
   } catch (error) {
     console.error('Failed to fetch posts:', error)
     return Response.json(

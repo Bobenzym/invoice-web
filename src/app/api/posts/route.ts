@@ -9,6 +9,9 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url)
     const page = parseInt(searchParams.get('page') ?? '1', 10)
     const limit = Math.min(parseInt(searchParams.get('limit') ?? '10', 10), 100)
+    const tag = searchParams.get('tag') ?? undefined
+    const category = searchParams.get('category') ?? undefined
+    const search = searchParams.get('search')?.trim() ?? undefined
 
     if (page < 1 || isNaN(page)) {
       return Response.json(
@@ -17,7 +20,33 @@ export async function GET(request: Request) {
       )
     }
 
-    const allPosts = await getPublishedPosts(1000)
+    let allPosts = await getPublishedPosts(1000)
+
+    // 필터링: 태그
+    if (tag) {
+      allPosts = allPosts.filter(post =>
+        post.tags.some(t => t.toLowerCase() === tag.toLowerCase())
+      )
+    }
+
+    // 필터링: 카테고리
+    if (category) {
+      allPosts = allPosts.filter(
+        post => post.category.toLowerCase() === category.toLowerCase()
+      )
+    }
+
+    // 필터링: 검색
+    if (search) {
+      const lowerSearch = search.toLowerCase()
+      allPosts = allPosts.filter(
+        post =>
+          post.title.toLowerCase().includes(lowerSearch) ||
+          post.excerpt.toLowerCase().includes(lowerSearch) ||
+          post.tags.some(t => t.toLowerCase().includes(lowerSearch))
+      )
+    }
+
     const total = allPosts.length
     const totalPages = Math.ceil(total / limit)
 

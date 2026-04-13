@@ -1,9 +1,21 @@
 import { Suspense } from 'react'
+import type { Metadata } from 'next'
 
 import { BlogPostListSkeleton } from '@/components/shared/loading-skeleton'
 import { BlogPostList } from '@/components/blog/blog-post-list'
 import { listPostsByCategory, toBlogPostSummary } from '@/lib/notion/database'
 import type { BlogPostSummary } from '@/lib/types/blog-post'
+
+export async function generateMetadata({
+  params,
+}: CategoryPageProps): Promise<Metadata> {
+  const { category } = await params
+  const decodedCategory = decodeURIComponent(category)
+  return {
+    title: `${decodedCategory} 카테고리`,
+    description: `"${decodedCategory}" 카테고리에 속한 모든 블로그 포스트를 살펴보세요.`,
+  }
+}
 
 interface CategoryPageProps {
   params: Promise<{ category: string }>

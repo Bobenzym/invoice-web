@@ -11,16 +11,16 @@
 
 | Phase        | 이름           | 상태    | 예상 기간  |
 | ------------ | -------------- | ------- | ---------- |
-| Phase 1      | 프로젝트 골격  | ⬜ 대기 | 1~2일      |
-| Phase 2      | 공통 모듈 개발 | ⬜ 대기 | 2~3일      |
-| Phase 3      | 핵심 기능 개발 | ⬜ 대기 | 3~4일      |
-| Phase 4      | 추가 기능 개발 | ⬜ 대기 | 2~3일      |
-| Phase 5      | 최적화 및 배포 | ⬜ 대기 | 1~2일      |
+| Phase 1      | 프로젝트 골격  | ✅ 완료 | 1~2일      |
+| Phase 2      | 공통 모듈 개발 | ✅ 완료 | 2~3일      |
+| Phase 3      | 핵심 기능 개발 | ✅ 완료 | 3~4일      |
+| Phase 4      | 추가 기능 개발 | ✅ 완료 | 2~3일      |
+| Phase 5      | 최적화 및 배포 | ✅ 완료 | 1~2일      |
 | **MVP 합계** |                |         | **9~14일** |
 
 ---
 
-## Phase 1: 프로젝트 골격 (1~2일)
+## Phase 1: 프로젝트 골격 (1~2일) ✅ 완료
 
 ### 왜 이 순서인가?
 
@@ -31,7 +31,7 @@ Notion API 설정·라우트 구조·TypeScript 타입이 결정되지 않으면
 
 #### 의존성 설치
 
-- [ ] Notion API 패키지 설치
+- [x] Notion API 패키지 설치
   ```bash
   npm install @notionhq/client
   npm install unified remark-parse remark-rehype rehype-stringify
@@ -40,41 +40,41 @@ Notion API 설정·라우트 구조·TypeScript 타입이 결정되지 않으면
 
 #### 환경 설정
 
-- [ ] `.env.local.example` 파일 생성
+- [x] `.env.local.example` 파일 생성
   ```
   NOTION_API_KEY=
   NOTION_BLOG_DATABASE_ID=
   NEXT_PUBLIC_SITE_URL=http://localhost:3000
   ```
-- [ ] `src/lib/env.ts` — Zod 환경변수 스키마 추가
+- [x] `src/lib/env.ts` — Zod 환경변수 스키마 추가
   - `NOTION_API_KEY` (서버 전용)
   - `NOTION_BLOG_DATABASE_ID` (서버 전용)
   - `NEXT_PUBLIC_SITE_URL`
 
 #### 라우트 구조 생성
 
-- [ ] `src/app/blog/` 디렉토리 생성
-- [ ] `src/app/blog/[slug]/` — 포스트 상세 페이지 라우트
-- [ ] `src/app/blog/tag/[tag]/` — 태그별 포스트 목록
-- [ ] `src/app/blog/category/[category]/` — 카테고리별 포스트 목록
-- [ ] `src/app/api/posts/` — 포스트 목록 API
-- [ ] `src/app/api/posts/[slug]/` — 포스트 상세 API
-- [ ] `src/app/api/search/` — 검색 API (스텁)
-- [ ] `src/app/api/feed.xml/` — RSS 피드 (스텁)
-- [ ] `src/app/api/notion/sync/` — Notion 웹훅 (스텁)
+- [x] `src/app/blog/` 디렉토리 생성
+- [x] `src/app/blog/[slug]/` — 포스트 상세 페이지 라우트
+- [x] `src/app/blog/tag/[tag]/` — 태그별 포스트 목록
+- [x] `src/app/blog/category/[category]/` — 카테고리별 포스트 목록
+- [x] `src/app/api/posts/` — 포스트 목록 API
+- [x] `src/app/api/posts/[slug]/` — 포스트 상세 API
+- [x] `src/app/api/search/` — 검색 API (스텁)
+- [x] `src/app/api/feed.xml/` — RSS 피드 (스텁)
+- [x] `src/app/api/notion/sync/` — Notion 웹훅 (스텁)
 
 #### 폴더 구조 생성
 
-- [ ] `src/lib/notion/` — Notion API 관련 함수
-- [ ] `src/lib/types/` — 공유 TypeScript 타입
-- [ ] `src/lib/schemas/` — Zod 검증 스키마
-- [ ] `src/components/blog/` — 블로그 컴포넌트
-- [ ] `src/components/shared/` — 공통 컴포넌트
+- [x] `src/lib/notion/` — Notion API 관련 함수
+- [x] `src/lib/types/` — 공유 TypeScript 타입
+- [x] `src/lib/schemas/` — Zod 검증 스키마
+- [x] `src/components/blog/` — 블로그 컴포넌트
+- [x] `src/components/shared/` — 공통 컴포넌트
 
 #### 기본 레이아웃 생성
 
-- [ ] `src/app/blog/layout.tsx` — 블로그 공통 레이아웃
-- [ ] 홈페이지 업데이트 (`src/app/page.tsx` → 블로그 소개로)
+- [x] `src/app/blog/layout.tsx` — 블로그 공통 레이아웃
+- [x] 홈페이지 업데이트 (`src/app/page.tsx` → 블로그 소개로)
 
 ### ✅ 완료 기준
 
@@ -85,7 +85,7 @@ Notion API 설정·라우트 구조·TypeScript 타입이 결정되지 않으면
 
 ---
 
-## Phase 2: 공통 모듈 개발 (2~3일)
+## Phase 2: 공통 모듈 개발 (2~3일) ✅ 완료
 
 ### 왜 이 순서인가?
 
@@ -97,7 +97,7 @@ Notion 클라이언트·포스트 타입·렌더링 유틸은 모든 API와 페�
 
 #### 공통 타입 정의
 
-- [ ] `src/lib/types/blog-post.ts`
+- [x] `src/lib/types/blog-post.ts`
 
   ```typescript
   interface BlogPost {
@@ -117,7 +117,7 @@ Notion 클라이언트·포스트 타입·렌더링 유틸은 모든 API와 페�
   }
   ```
 
-- [ ] `src/lib/types/api.ts` — API 응답 타입
+- [x] `src/lib/types/api.ts` — API 응답 타입
 
   ```typescript
   interface ApiResponse<T> {
@@ -140,18 +140,18 @@ Notion 클라이언트·포스트 타입·렌더링 유틸은 모든 API와 페�
 
 #### Notion API 공통 함수
 
-- [ ] `src/lib/notion/client.ts` — Notion 클라이언트 싱글톤
+- [x] `src/lib/notion/client.ts` — Notion 클라이언트 싱글톤
 
   ```typescript
   export const notionClient = new Client({ auth: process.env.NOTION_API_KEY })
   ```
 
-- [ ] `src/lib/notion/blog-post-mapper.ts` — Notion Page → BlogPost 변환
+- [x] `src/lib/notion/blog-post-mapper.ts` — Notion Page → BlogPost 변환
   - `mapNotionPageToBlogPost(page: PageObjectResponse): Promise<BlogPost>`
   - Property 타입별 파싱 (텍스트, 날짜, 멀티선택 등)
   - 실제 Notion 데이터 쿼리 후 검증
 
-- [ ] `src/lib/notion/database.ts` — 데이터베이스 조회
+- [x] `src/lib/notion/database.ts` — 데이터베이스 조회
 
   ```typescript
   export async function getPublishedPosts(limit?: number): Promise<BlogPost[]>
@@ -162,13 +162,13 @@ Notion 클라이언트·포스트 타입·렌더링 유틸은 모든 API와 페�
   ): Promise<BlogPost[]>
   ```
 
-- [ ] Notion 쿼리 필터
+- [x] Notion 쿼리 필터
   - `status === "published"` 만 조회
   - `publishedAt` 기준 역순 정렬
 
 #### 공통 유틸리티
 
-- [ ] `src/lib/utils.ts` — 기존 `cn()` 유지, 아래 함수 추가
+- [x] `src/lib/utils.ts` — 기존 `cn()` 유지, 아래 함수 추가
 
   ```typescript
   export function formatDate(date: Date, locale?: string): string
@@ -177,17 +177,17 @@ Notion 클라이언트·포스트 타입·렌더링 유틸은 모든 API와 페�
   export function slugify(text: string): string
   ```
 
-- [ ] `src/lib/markdown.ts` — Markdown/Notion 렌더링
+- [x] `src/lib/markdown.ts` — Markdown/Notion 렌더링
   - Unified 파이프라인 설정 (remark-parse → rehype-stringify)
   - 코드 하이라이팅 플러그인 설정 (rehype-highlight)
 
 #### 공통 컴포넌트
 
-- [ ] `src/components/shared/tag-badge.tsx` — 태그 배지
-- [ ] `src/components/shared/category-badge.tsx` — 카테고리 배지
-- [ ] `src/components/shared/reading-time.tsx` — 읽기 시간 표시
-- [ ] `src/components/shared/loading-skeleton.tsx` — 로딩 스켈레톤
-- [ ] `src/components/shared/error-fallback.tsx` — 에러 표시
+- [x] `src/components/shared/tag-badge.tsx` — 태그 배지
+- [x] `src/components/shared/category-badge.tsx` — 카테고리 배지
+- [x] `src/components/shared/reading-time.tsx` — 읽기 시간 표시
+- [x] `src/components/shared/loading-skeleton.tsx` — 로딩 스켈레톤
+- [x] `src/components/shared/error-fallback.tsx` — 에러 표시
 
 ### ✅ 완료 기준
 
@@ -198,7 +198,7 @@ Notion 클라이언트·포스트 타입·렌더링 유틸은 모든 API와 페�
 
 ---
 
-## Phase 3: 핵심 기능 개발 (3~4일)
+## Phase 3: 핵심 기능 개발 (3~4일) ✅ 완료
 
 ### 왜 이 순서인가?
 
@@ -211,21 +211,21 @@ Notion 클라이언트·포스트 타입·렌더링 유틸은 모든 API와 페�
 
 #### API Routes 구현
 
-- [ ] `src/app/api/posts/route.ts` — `GET` 핸들러
+- [x] `src/app/api/posts/route.ts` — `GET` 핸들러
 
   ```typescript
   Query: page=1, limit=10, tag=, category=, search=
   Response: ApiPaginatedResponse<BlogPost>
   ```
 
-- [ ] `src/app/api/posts/[slug]/route.ts` — `GET` 핸들러
+- [x] `src/app/api/posts/[slug]/route.ts` — `GET` 핸들러
 
   ```typescript
   Response: ApiResponse<BlogPost>
   404 시: { success: false, error: "Post not found" }
   ```
 
-- [ ] `src/app/api/notion/sync/route.ts` — `POST` 웹훅 (스텁)
+- [x] `src/app/api/notion/sync/route.ts` — `POST` 웹훅 (스텁)
   ```typescript
   Body: { type: "page.updated", page_id: string }
   향후 캐시 무효화 트리거
@@ -235,54 +235,54 @@ Notion 클라이언트·포스트 타입·렌더링 유틸은 모든 API와 페�
 
 > 순서: 기본 → 상세 → 렌더러 → 페이지
 
-- [ ] `src/components/blog/blog-post-card.tsx` — 목록용 포스트 카드
+- [x] `src/components/blog/blog-post-card.tsx` — 목록용 포스트 카드
   - 제목, 요약, 날짜, 태그, 커버 이미지
   - shadcn/ui `Card` 활용
 
-- [ ] `src/components/blog/blog-post-list.tsx` — 포스트 목록 컨테이너
+- [x] `src/components/blog/blog-post-list.tsx` — 포스트 목록 컨테이너
   - 페이지네이션 또는 무한 스크롤
   - 로딩/에러 상태
 
-- [ ] `src/components/blog/blog-post-header.tsx` — 포스트 헤더
+- [x] `src/components/blog/blog-post-header.tsx` — 포스트 헤더
   - 제목, 메타데이터 (작성자, 날짜, 읽기시간), 태그
 
-- [ ] `src/components/blog/blog-post-content.tsx` — 포스트 본문
+- [x] `src/components/blog/blog-post-content.tsx` — 포스트 본문
   - Notion 블록 배열 렌더링
   - 코드 블록 구문 강조
 
-- [ ] `src/components/notion/notion-block-renderer.tsx` — Notion 블록 렌더러
+- [x] `src/components/notion/notion-block-renderer.tsx` — Notion 블록 렌더러
   - 텍스트, 제목, 목록, 이미지, 코드, 인용, 테이블 블록 지원
   - Unified + rehype 파이프라인
 
-- [ ] `src/components/blog/blog-post-toc.tsx` — 목차 (TOC)
+- [x] `src/components/blog/blog-post-toc.tsx` — 목차 (TOC)
   - `<h2>`, `<h3>` 자동 추출
   - 스티키 포지셔닝
 
-- [ ] `src/components/blog/blog-post-footer.tsx` — 포스트 하단
+- [x] `src/components/blog/blog-post-footer.tsx` — 포스트 하단
   - 관련 포스트 추천 (같은 태그/카테고리)
   - 네비게이션 (이전/다음 포스트)
 
-- [ ] `src/components/blog/blog-post-detail.tsx` — 위 컴포넌트 조립
+- [x] `src/components/blog/blog-post-detail.tsx` — 위 컴포넌트 조립
 
 #### 페이지 구현
 
-- [ ] `src/app/blog/page.tsx` — 블로그 홈 (포스트 목록)
+- [x] `src/app/blog/page.tsx` — 블로그 홈 (포스트 목록)
   - `getPublishedPosts()` 호출
   - `Suspense` + `LoadingSkeleton` 적용
 
-- [ ] `src/app/blog/[slug]/page.tsx` — 포스트 상세 (Server Component)
+- [x] `src/app/blog/[slug]/page.tsx` — 포스트 상세 (Server Component)
   - `generateStaticParams()` (ISR 최적화)
   - `generateMetadata()` (SEO)
 
-- [ ] `src/app/blog/[slug]/loading.tsx` — 로딩 스켈레톤
+- [x] `src/app/blog/[slug]/loading.tsx` — 로딩 스켈레톤
 
-- [ ] `src/app/blog/[slug]/error.tsx` — 에러 바운더리
+- [x] `src/app/blog/[slug]/error.tsx` — 에러 바운더리
 
-- [ ] `src/app/blog/[slug]/not-found.tsx` — 404 커스텀
+- [x] `src/app/blog/[slug]/not-found.tsx` — 404 커스텀
 
-- [ ] `src/app/blog/tag/[tag]/page.tsx` — 태그별 필터 페이지
+- [x] `src/app/blog/tag/[tag]/page.tsx` — 태그별 필터 페이지
 
-- [ ] `src/app/blog/category/[category]/page.tsx` — 카테고리별 필터 페이지
+- [x] `src/app/blog/category/[category]/page.tsx` — 카테고리별 필터 페이지
 
 ### ✅ 완료 기준
 
@@ -294,7 +294,7 @@ Notion 클라이언트·포스트 타입·렌더링 유틸은 모든 API와 페�
 
 ---
 
-## Phase 4: 추가 기능 개발 (2~3일)
+## Phase 4: 추가 기능 개발 (2~3일) ✅ 완료
 
 ### 왜 이 순서인가?
 
@@ -305,7 +305,7 @@ RSS·사이트맵·다크모드는 UI가 확정된 상태에서 추가해야 빠
 
 #### RSS 피드 생성
 
-- [ ] `src/app/api/feed.xml/route.ts` — RSS 2.0 / Atom 1.0
+- [x] `src/app/api/feed.xml/route.ts` — RSS 2.0 / Atom 1.0
   ```typescript
   Response: application / xml
   포함: (제목, 설명, 링크, pubDate)
@@ -313,48 +313,48 @@ RSS·사이트맵·다크모드는 UI가 확정된 상태에서 추가해야 빠
 
 #### 사이트맵 및 SEO
 
-- [ ] `src/app/sitemap.ts` — 동적 사이트맵
+- [x] `src/app/sitemap.ts` — 동적 사이트맵
 
   ```typescript
   반환: { url, lastModified, changeFrequency, priority }[]
   모든 /blog/[slug] 포함
   ```
 
-- [ ] `src/app/robots.ts` — robots.txt 생성
+- [x] `src/app/robots.ts` — robots.txt 생성
 
-- [ ] 각 포스트 페이지 `generateMetadata()`
+- [x] 각 포스트 페이지 `generateMetadata()`
   - `title`, `description` (excerpt)
   - Open Graph (og:title, og:image, og:url)
   - Twitter Card (twitter:card, twitter:image)
 
 #### 다크모드 지원
 
-- [ ] 블로그 컴포넌트 전체 `dark:` 클래스 추가
+- [x] 블로그 컴포넌트 전체 `dark:` 클래스 추가
   - 텍스트 색상, 배경, 테두리
   - 코드 블록 다크 테마
 
-- [ ] ThemeProvider 통합 (기존 `next-themes` 활용)
+- [x] ThemeProvider 통합 (기존 `next-themes` 활용)
 
 #### 검색 기능 (선택사항)
 
-- [ ] `src/app/api/search/route.ts` — 텍스트 검색 API
+- [x] `src/app/api/search/route.ts` — 텍스트 검색 API
   - 간단한 구현: 클라이언트 측 필터링
   - 고급: Algolia 또는 Meilisearch
 
-- [ ] `src/components/blog/blog-search.tsx` — 검색 폼
+- [x] `src/components/blog/blog-search.tsx` — 검색 폼
 
 #### 접근성 및 성능
 
-- [ ] 블로그 컴포넌트 `aria-label`, `role` 추가
-- [ ] 이미지 `alt` 텍스트 검증
-- [ ] Next.js `<Image>` 컴포넌트 활용
-- [ ] 코드 분할 (동적 import)
+- [x] 블로그 컴포넌트 `aria-label`, `role` 추가
+- [x] 이미지 `alt` 텍스트 검증
+- [x] Next.js `<Image>` 컴포넌트 활용
+- [x] 코드 분할 (동적 import)
 
 #### 에러 처리
 
-- [ ] Notion API 타임아웃 (5초)
-- [ ] 포스트 로드 실패 시 폴백 UI
-- [ ] 전역 에러 바운더리 `src/app/error.tsx`
+- [x] Notion API 타임아웃 (5초)
+- [x] 포스트 로드 실패 시 폴백 UI
+- [x] 전역 에러 바운더리 `src/app/error.tsx`
 
 ### ✅ 완료 기준
 
@@ -366,7 +366,7 @@ RSS·사이트맵·다크모드는 UI가 확정된 상태에서 추가해야 빠
 
 ---
 
-## Phase 5: 최적화 및 배포 (1~2일)
+## Phase 5: 최적화 및 배포 (1~2일) ✅ 완료
 
 ### 왜 이 순서인가?
 
@@ -376,40 +376,40 @@ RSS·사이트맵·다크모드는 UI가 확정된 상태에서 추가해야 빠
 
 #### 캐싱 전략
 
-- [ ] `getPublishedPosts()` — `revalidate: 3600` (1시간)
-- [ ] `getPostBySlug()` — `revalidate: 3600`
-- [ ] API Routes — `Cache-Control` 헤더 설정
-- [ ] Notion 웹훅 시 `revalidateTag()` 호출
+- [x] `getPublishedPosts()` — `revalidate: 3600` (1시간)
+- [x] `getPostBySlug()` — `revalidate: 3600`
+- [x] API Routes — `Cache-Control` 헤더 설정
+- [x] Notion 웹훅 시 `revalidateTag()` 호출
 
 #### 성능 최적화
 
-- [ ] 번들 크기 분석 (`npm run build` 로그 확인)
-- [ ] 각 페이지 First Load JS < 200KB
-- [ ] 이미지 최적화
+- [x] 번들 크기 분석 (`npm run build` 로그 확인)
+- [x] 각 페이지 First Load JS < 200KB
+- [x] 이미지 최적화
   - 커버 이미지: `priority`, `sizes` 속성
   - 포스트 인라인 이미지: `loading="lazy"`
 
 #### 빌드 검증
 
-- [ ] `npm run check-all` 통과
-- [ ] `npm run build` 성공 (경고 없음)
-- [ ] 미사용 import 제거
+- [x] `npm run check-all` 통과
+- [x] `npm run build` 성공 (경고 없음)
+- [x] 미사용 import 제거
 
 #### Vercel 배포
 
-- [ ] Vercel 프로젝트 생성
-- [ ] 환경변수 설정
+- [x] Vercel 프로젝트 생성
+- [x] 환경변수 설정
   - `NOTION_API_KEY`
   - `NOTION_BLOG_DATABASE_ID`
   - `NEXT_PUBLIC_SITE_URL`
 
-- [ ] 배포 후 E2E 검증
+- [x] 배포 후 E2E 검증
   - 블로그 목록 조회 → 렌더링
   - 포스트 상세 조회 → 본문 표시
   - RSS 피드 다운로드
   - 검색 동작 (있을 경우)
 
-- [ ] Core Web Vitals 측정
+- [x] Core Web Vitals 측정
   - LCP (Largest Contentful Paint): 2.5초 이하
   - FID (First Input Delay): 100ms 이하
   - CLS (Cumulative Layout Shift): 0.1 이하

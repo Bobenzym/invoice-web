@@ -1,4 +1,5 @@
 import { Suspense } from 'react'
+import type { Metadata } from 'next'
 
 import { BlogPostListSkeleton } from '@/components/shared/loading-skeleton'
 import { BlogPostList } from '@/components/blog/blog-post-list'
@@ -7,6 +8,12 @@ import { BlogSearch } from '@/components/blog/blog-search'
 import { getPublishedPosts } from '@/lib/notion/database'
 import type { BlogPostSummary } from '@/lib/types/blog-post'
 import type { ApiPaginatedResponse } from '@/lib/types/api'
+
+export const metadata: Metadata = {
+  title: '블로그',
+  description:
+    'Notion으로 작성한 블로그 포스트 모음입니다. 개발, 기술, 일상을 주제로 다양한 콘텐츠를 공유합니다.',
+}
 
 interface BlogPageProps {
   searchParams: Promise<{ page?: string }>

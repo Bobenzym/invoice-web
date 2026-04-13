@@ -1,9 +1,21 @@
 import { Suspense } from 'react'
+import type { Metadata } from 'next'
 
 import { BlogPostListSkeleton } from '@/components/shared/loading-skeleton'
 import { BlogPostList } from '@/components/blog/blog-post-list'
 import { listPostsByTag, toBlogPostSummary } from '@/lib/notion/database'
 import type { BlogPostSummary } from '@/lib/types/blog-post'
+
+export async function generateMetadata({
+  params,
+}: TagPageProps): Promise<Metadata> {
+  const { tag } = await params
+  const decodedTag = decodeURIComponent(tag)
+  return {
+    title: `#${decodedTag} 태그`,
+    description: `"${decodedTag}" 태그로 작성된 모든 블로그 포스트를 살펴보세요.`,
+  }
+}
 
 interface TagPageProps {
   params: Promise<{ tag: string }>

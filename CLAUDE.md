@@ -15,6 +15,7 @@
 
 ## 📚 개발 가이드
 
+- **🦐 AI 에이전트 운영 규칙**: `@/shrimp-rules.md` — **모든 작업 전 최우선 참조** (디렉터리 배치, Prettier 강제사항, Notion 계층 규칙, 다중 파일 연동, 금지 사항)
 - **🗺️ 개발 로드맵**: `@/docs/ROADMAP.md`
 - **📋 프로젝트 요구사항**: `@/docs/PRD.md`
 - **📁 프로젝트 구조**: `@/docs/guides/project-structure.md`
@@ -43,3 +44,5 @@ npm run build       # 빌드 성공 확인
 ```
 
 💡 **상세 규칙은 위 개발 가이드 문서들을 참조하세요**
+
+📌 **규칙 우선순위**: `shrimp-rules.md` → `CLAUDE.md` → `docs/guides/*` → 기존 코드 관례
